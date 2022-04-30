@@ -15,8 +15,8 @@ def search_mas(x):
     return list_zero
 
 
-def randomizing():
-    pass
+def randomizing(x):
+    return random.choice(search_mas(x)), random.choice([2, 4])
 
 
 mas = [
@@ -27,5 +27,6 @@ mas = [
 ]
 
 
-print(*search_mas(mas))
+print(randomizing(mas))
+# print(*search_mas(mas))
 # prnt(mas)

@@ -22,6 +22,11 @@ def randomizing(x):  # функция рандомного заполнения 
     x[random_elem[0]][random_elem[1]] = random.choice([2, 4])
 
 
+def go_right(x):
+    for i in search_mas(x):
+        print(i)
+
+
 mas = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -32,5 +37,6 @@ mas = [
 prnt(mas)
 randomizing(mas)
 prnt(mas)
+go_right(mas)
 # print(*search_mas(mas))
 # prnt(mas)

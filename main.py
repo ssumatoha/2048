@@ -17,4 +17,5 @@ def run():
         screen.fill(bg_color)  # делаю заливку фона
         pygame.display.flip()  # "переворачиваю" экран
 
+
 run()

@@ -22,7 +22,7 @@ def randomizing(x):  # функция рандомного заполнения 
     x[random_elem[0]][random_elem[1]] = random.choice([2, 4])
 
 
-def go_left(x):
+def go_left(x):  # функция-свайп влево
     for i in x:
         for j in range(3):
             if i[j] == 0 and i[j + 1] != 0:
@@ -31,8 +31,14 @@ def go_left(x):
                 go_left(x)
 
 
+def go_right(x):  # функция-свайп вправо
+    [i.reverse() for i in x]
+    go_left(x)
+    [i.reverse() for i in x]
+
+
 mas = [
-    [0, 0, 2, 3],
+    [3, 0, 2, 0],
     [0, 4, 0, 0],
     [0, 0, 5, 0],
     [0, 0, 0, 0],
@@ -41,7 +47,7 @@ mas = [
 #prnt(mas)
 randomizing(mas)
 prnt(mas)
-go_left(mas)
+go_right(mas)
 prnt(mas)
 # print(*search_mas(mas))
 # prnt(mas)

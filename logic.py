@@ -41,11 +41,19 @@ def go_right(x):  # функция-свайп вправо
     [i.reverse() for i in x]
 
 
-def go_top(x):  # Функция-свайп вверх
+def go_top(x):  # функция-свайп вверх
     x = rotate_matrix(x)
     go_left(x)
     for i in range(3):
         x = rotate_matrix(x)
+    return x
+
+
+def go_bot(x):  # функция-свайп вниз
+    for i in range(3):
+        x = rotate_matrix(x)
+    go_left(x)
+    x = rotate_matrix(x)
     return x
 
 
@@ -59,7 +67,7 @@ mas = [
 #prnt(mas)
 randomizing(mas)
 prnt(mas)
-mas = go_top(mas)
+mas = go_bot(mas)
 #go_right(mas)
 prnt(mas)
 # print(*search_mas(mas))

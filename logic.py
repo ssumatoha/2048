@@ -1,6 +1,10 @@
 import random
 
 
+def rotate_matrix(x):  # функция поворота матрицы
+    return [[x[j][i] for j in range(len(x))] for i in range(len(x[0])-1, -1, -1)]
+
+
 def prnt(x):  # функция красивого вывода
     print('-' * 10)
     for i in x:
@@ -37,6 +41,14 @@ def go_right(x):  # функция-свайп вправо
     [i.reverse() for i in x]
 
 
+def go_top(x):  # Функция-свайп вверх
+    x = rotate_matrix(x)
+    go_left(x)
+    for i in range(3):
+        x = rotate_matrix(x)
+    return x
+
+
 mas = [
     [3, 0, 2, 0],
     [0, 4, 0, 0],
@@ -47,7 +59,8 @@ mas = [
 #prnt(mas)
 randomizing(mas)
 prnt(mas)
-go_right(mas)
+mas = go_top(mas)
+#go_right(mas)
 prnt(mas)
 # print(*search_mas(mas))
 # prnt(mas)

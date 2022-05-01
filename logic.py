@@ -22,27 +22,26 @@ def randomizing(x):  # функция рандомного заполнения 
     x[random_elem[0]][random_elem[1]] = random.choice([2, 4])
 
 
-def go_right(x):
+def go_left(x):
     for i in x:
-        i.reverse()
         for j in range(3):
             if i[j] == 0 and i[j + 1] != 0:
                 i[j] = i[j + 1]
                 i[j + 1] = 0
-        i.reverse()
+                go_left(x)
 
 
 mas = [
-    [32, 4, 16, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
+    [0, 0, 2, 3],
+    [0, 4, 0, 0],
+    [0, 0, 5, 0],
     [0, 0, 0, 0],
 ]
 
 #prnt(mas)
 randomizing(mas)
 prnt(mas)
-go_right(mas)
+go_left(mas)
 prnt(mas)
 # print(*search_mas(mas))
 # prnt(mas)

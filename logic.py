@@ -12,6 +12,13 @@ def prnt(x):  # функция красивого вывода
     print('-' * 10)
 
 
+def search2048(x):
+    for i in range(4):
+        for j in range(4):
+            if x[i][j] == 2048:
+                return False
+
+
 def search_mas_zero(x):  # функция поиска нулевых значений
     list_zero = []
     for i in range(4):
@@ -59,20 +66,3 @@ def go_bot(x):  # функция-свайп вниз
     go_left(x)
     x = rotate_matrix(x)
     return x
-
-
-mas = [
-    [3, 0, 2, 0],
-    [0, 4, 2, 0],
-    [0, 0, 5, 0],
-    [0, 0, 0, 0],
-]
-
-#prnt(mas)
-randomizing(mas)
-prnt(mas)
-mas = go_bot(mas)
-#go_right(mas)
-prnt(mas)
-# print(*search_mas(mas))
-# prnt(mas)

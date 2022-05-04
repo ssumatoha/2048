@@ -6,6 +6,7 @@ MARGIN = 10
 WIDTH = BLOCKS * SIZE_BLOCK + (BLOCKS+1) * MARGIN
 HEIGHT = WIDTH + 110
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 
 
 def run():
@@ -26,6 +27,11 @@ def run():
                         w = column * SIZE_BLOCK + (column + 1) * MARGIN
                         h = row * SIZE_BLOCK + (row + 1) * MARGIN
                         pygame.draw.rect(screen, WHITE, (w, h, 110, 110))
+                fontObj = pygame.font.Font('freesansbold.ttf', 50)
+                textSurfaceObj = fontObj.render('2', True, BLACK, WHITE)
+                textRectObj = textSurfaceObj.get_rect()
+                textRectObj.center = (65, 65)
+                screen.blit(textSurfaceObj, textRectObj)
 
 
 run()

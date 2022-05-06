@@ -1,6 +1,14 @@
 from logic import *
 
 
+mas = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+]
+
+
 def game(x):
     while True:
         if len(search_mas_zero(x)) == 1:

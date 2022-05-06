@@ -1,5 +1,5 @@
 import pygame
-from interface import *
+from logic import *
 
 BLOCKS = 4
 SIZE_BLOCK = 110
@@ -34,7 +34,7 @@ def draw(scr):
             scr.blit(textSurfaceObj, textRectObj)
 
 
-def run():
+def run(m):
     pygame.init()  # инициализирую пайгейм
     screen = pygame.display.set_mode((WIDTH, HEIGHT - 110))  # Устанавливаю окно и указываю размер
     pygame.display.set_caption('2048')  # Указываю название игры
@@ -52,9 +52,11 @@ def run():
                         w = column * SIZE_BLOCK + (column + 1) * MARGIN
                         h = row * SIZE_BLOCK + (row + 1) * MARGIN
                         pygame.draw.rect(screen, WHITE, (w, h, 110, 110))
+                randomizing(m)
                 draw(screen)
+                if event.key == pygame.K_UP:
+                    m = go_top(m)
+                    draw(screen)
 
-                #  if event.key == pygame.K_UP:
 
-
-run()
+run(mas)

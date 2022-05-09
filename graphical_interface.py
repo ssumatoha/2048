@@ -1,5 +1,3 @@
-import time
-
 import pygame
 from logic import *
 
@@ -12,7 +10,7 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 
-def search_num(x):
+def search_num(x):  # Поиск одинаковых чисел рядом
     output = False
     for i in range(4):
         for j in range(3):
@@ -29,12 +27,12 @@ def search_num(x):
     return output
 
 
-def run():
+def run():  # Функция запуска игры с графическим интерфейсом
     mas = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
+        [0, 0, 512, 0],
+        [0, 0, 0, 512],
     ]
 
     mas_coord = [
@@ -44,7 +42,7 @@ def run():
         [[65, 425], [186, 425], [307, 425], [428, 425]],
     ]
 
-    def draw(scr):
+    def draw(scr):  # функция отрисовки чисел
         for i in range(4):
             for j in range(4):
                 number = mas[i][j]
@@ -90,10 +88,17 @@ def run():
                     go_right(mas)
                     randomizing(mas)
                     draw(screen)
-                if len(search_mas_zero(mas)) == 1 and search_num(mas) == False:
+                if len(search_mas_zero(mas)) == 1 and search_num(mas) == False:  # проверка на поражение
                     print('вы проиграли')
                     fontObj = pygame.font.Font('freesansbold.ttf', 50)
                     textSurfaceObj = fontObj.render('ВЫ ПРОИГРАЛИ!!', True, BLACK, WHITE)
+                    textRectObj = textSurfaceObj.get_rect()
+                    textRectObj.center = (250, 250)
+                    screen.blit(textSurfaceObj, textRectObj)
+                if search2048(mas) == True:
+                    print('вы победили')
+                    fontObj = pygame.font.Font('freesansbold.ttf', 50)
+                    textSurfaceObj = fontObj.render('ВЫ ПОБЕДИЛИ!!', True, BLACK, WHITE)
                     textRectObj = textSurfaceObj.get_rect()
                     textRectObj.center = (250, 250)
                     screen.blit(textSurfaceObj, textRectObj)

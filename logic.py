@@ -12,11 +12,11 @@ def prnt(x):  # функция красивого вывода
     print('-' * 10)
 
 
-def search2048(x):
+def search2048(x):  # поиск числа 2048 для победы
     for i in range(4):
         for j in range(4):
             if x[i][j] == 2048:
-                return False
+                return True
 
 
 def search_mas_zero(x):  # функция поиска нулевых значений

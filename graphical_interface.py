@@ -1,3 +1,5 @@
+import time
+
 import pygame
 from logic import *
 
@@ -8,6 +10,23 @@ WIDTH = BLOCKS * SIZE_BLOCK + (BLOCKS+1) * MARGIN
 HEIGHT = WIDTH + 110
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+
+
+def search_num(x):
+    output = False
+    for i in range(4):
+        for j in range(3):
+            if x[i][j] == x[i][j + 1]:
+                output = True
+                return output
+            else:
+                output = False
+    for i in range(3):
+        for j in range(4):
+            if x[i][j] == x[i + 1][j]:
+                output = True
+                return output
+    return output
 
 
 def run():
@@ -71,6 +90,13 @@ def run():
                     go_right(mas)
                     randomizing(mas)
                     draw(screen)
+                if len(search_mas_zero(mas)) == 1 and search_num(mas) == False:
+                    print('вы проиграли')
+                    fontObj = pygame.font.Font('freesansbold.ttf', 50)
+                    textSurfaceObj = fontObj.render('ВЫ ПРОИГРАЛИ!!', True, BLACK, WHITE)
+                    textRectObj = textSurfaceObj.get_rect()
+                    textRectObj.center = (250, 250)
+                    screen.blit(textSurfaceObj, textRectObj)
 
 
 run()
